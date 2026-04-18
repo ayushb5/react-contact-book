@@ -21,3 +21,4 @@ Further Addons-
 
 - Carousel for contact card slides or Pagination
 - Search functionality work
+- Functionality for Update and delete the contacts.
