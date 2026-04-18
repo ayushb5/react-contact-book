@@ -1,30 +1,36 @@
-function Card() {
-    return (
-        <div className="container d-flex justify-content-center align-items-center" style={{ height: "80vh" }}>
-            <div>
-                <div className="card p-2 w-auto shadow">
-                    <div className="card-body d-flex flex-column fw-semibold justify-content-center align-items-center m-4">
-                        <img src="https://img.freepik.com/premium-vector/man-professional-business-casual-young-avatar-icon-illustration_1277826-623.jpg?semt=ais_hybrid&w=740&q=80" />
-                        <div className="shareBtn">
-                            <i className="bi bi-share"></i>
-                        </div>
-                        <span className="fs-2" id="contactName">John Doe</span>
-                        <span className="text-muted fs-5" id="passion">Designer</span>
-                        <div className="d-flex flex-row gap-2 mt-3 ">
-                            <span className="badge text-bg-secondary rounded w-50" id="tag1">
-                                Figma
-                            </span>
-                            <span className="badge text-bg-secondary rounded w-50" id="tag2">
-                                Canva
-                            </span>
-                        </div>
+function Card({ contactData }) {
 
-                        <button className="btn btn-outline-success mt-4">
-                            Get in touch
-                        </button>
+    return (
+        <div className="container d-flex flex-wrap justify-content-center mt-5 gap-4">
+            {contactData.length === 0 ? (
+                <h3>No Contacts Found</h3>
+            ) : (
+                contactData.map((contact) => (
+                    <div key={contact.id} className="card p-2 shadow" style={{ width: "250px", height: "360px" }}>
+                        <div className="card-body d-flex flex-column align-items-center justify-content-between h-100 p-4">
+                            <img src={contact.avatar} alt="avatar" className="img-fluid" onError={(e) => {
+                                e.target.src = "https://via.placeholder.com/80";
+                            }} />
+                            <div className="shareBtn">
+                                <i className="bi bi-share"></i>
+                            </div>
+                            <span className="fs-2" id="contactName">{contact.name}</span>
+                            <span className="text-muted fs-5" id="passion">{contact.passion}</span>
+                            <div className="d-flex flex-wrap justify-content-center gap-2 mt-3">
+                                {contact.skills.split(",").map((skill) => (
+                                    <span key={skill} className="badge text-bg-secondary">{skill.trim()}</span>
+                                ))}
+                            </div>
+
+                            <button className="btn btn-outline-success mt-4">
+                                Get in touch
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </div>
+                ))
+            )
+
+            }
         </div>
     )
 }
