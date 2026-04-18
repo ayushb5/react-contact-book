@@ -16,3 +16,8 @@ Concepts from JS
 3. DOM manipulation
 4. Form validation
 5. Event Handling
+
+Further Addons-
+
+- Carousel for contact card slides or Pagination
+- Search functionality work
